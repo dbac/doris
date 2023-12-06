@@ -24,13 +24,14 @@
 # You need to make sure all thirdparty libraries have been
 # compiled and installed correctly.
 ##############################################################
-
+##set -eo pipefail 可以使 Shell 脚本更加健壮，当任何命令返回错误时，立即退出脚本，从而能够及早发现错误并避免进一步的意外后果
 set -eo pipefail
-
+##用于获取当前脚本所在目录的绝对路径，设置给root
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 
 export DORIS_HOME="${ROOT}"
 
+## 执行env.sh脚本
 . "${DORIS_HOME}/env.sh"
 
 # Check args
